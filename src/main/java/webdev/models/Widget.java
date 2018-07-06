@@ -16,6 +16,7 @@ public class Widget {
 	@JsonIgnore
 	private Lesson lesson;
 	
+	
 	private String name;
 	private int size;
 	private String href;

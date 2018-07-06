@@ -17,12 +17,19 @@ public class Question {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String title;
-	private String subtitle;
+	private String description;
+	private String points;
 	private String type;
 	@ManyToOne
 	@JsonIgnore
 	private Exam exam;
 	
+	public String getPoints() {
+		return points;
+	}
+	public void setPoints(String points) {
+		this.points = points;
+	}	
 	public int getId() {
 		return id;
 	}
@@ -35,11 +42,12 @@ public class Question {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getSubtitle() {
-		return subtitle;
+
+	public String getDescription() {
+		return description;
 	}
-	public void setSubtitle(String subtitle) {
-		this.subtitle = subtitle;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	public String getType() {
 		return type;
