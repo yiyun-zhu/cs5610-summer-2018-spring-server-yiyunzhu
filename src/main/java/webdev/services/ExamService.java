@@ -38,14 +38,14 @@ public class ExamService {
 	// find assignments for a lesson
 	@GetMapping("api/lesson/{lessonId}/exam")
 	public List<Exam> findExamsForLesson(
-					@PathVariable("lessontId")int lessonId) {
+					@PathVariable("lessonId")int lessonId) {
 		List<Exam> result = new ArrayList<Exam>();
 		Optional<Lesson> data = lessonRepo.findById(lessonId);
 		if (data.isPresent()) {
 			Lesson lesson = data.get();
 			List<Widget> widgets =  lesson.getWidgets();
 			for (Widget w : widgets) {
-				if (w.getWidgetType() == "Exam" ) {
+				if (w.getWidgetType().equals("Exam") ) {
 					result.add((Exam)w);
 				}
 			}
@@ -53,9 +53,9 @@ public class ExamService {
 		return result;
 	}
 	// find all exams
-	@GetMapping("/api/exam/")
+	@GetMapping("/api/exam")
 	public List<Exam> findAllQExams() {
-		return (List<Exam>) examRepo.findAll();
+		return (List<Exam>)examRepo.findAll();
 	}
 	// delete
 	@DeleteMapping("api/exam/{examId}")

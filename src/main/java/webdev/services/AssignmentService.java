@@ -47,14 +47,14 @@ public class AssignmentService {
 	// find assignments for a lesson
 	@GetMapping("api/lesson/{lessonId}/assignment")
 	public List<Assignment> findAssignmentsForLesson(
-					@PathVariable("lessontId")int lessonId) {
+					@PathVariable("lessonId")int lessonId) {
 		List<Assignment> result = new ArrayList<Assignment>();
 		Optional<Lesson> data = lessonRepository.findById(lessonId);
 		if (data.isPresent()) {
 			Lesson lesson = data.get();
 			List<Widget> widgets =  lesson.getWidgets();
 			for (Widget w : widgets) {
-				if (w.getWidgetType() == "Assignment" ) {
+				if (w.getWidgetType().equals("Assignment")) {
 					result.add((Assignment)w);
 				}
 			}
